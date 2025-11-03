@@ -6,7 +6,7 @@
 
 ## Funcionalidades
 
-### 🏠 Tela Inicial / Dashboard
+### 🏠 Dashboard
 - Barra de busca por livro, autor ou gênero
 - Recomendações personalizadas baseadas em gostos similares
 - Botão "Explorar conexões" para visualização do grafo
@@ -36,41 +36,6 @@
 - Cadastro com seleção de gêneros favoritos
 - Usuários de demonstração incluídos
 
-## 🎨 Design
-
-- **Inspiração**: Goodreads e Spotify
-- **Cores**: Azul (#6366f1) e Lilás (#9b59b6)
-- **Estilo**: Moderno, limpo e intuitivo
-- **Responsivo**: Adaptável a diferentes tamanhos de tela
-
-## Como Executar
-
-### Pré-requisitos
-- Python 3.8 ou superior
-- pip (gerenciador de pacotes Python)
-
-### Instalação
-
-1. **Clone ou navegue até o diretório do projeto**
-```bash
-cd c:\Users\root\Desktop\Emilly
-```
-
-2. **Instale as dependências**
-```bash
-pip install -r requirements.txt
-```
-
-3. **Execute a aplicação**
-```bash
-python app.py
-```
-
-4. **Acesse no navegador**
-```
-http://localhost:5000
-```
-
 ## Usuários de Demonstração
 
 Use qualquer um destes e-mails para fazer login (senha não é necessária):
@@ -88,26 +53,6 @@ O sistema inclui dados mockados que simulam um banco de dados Neo4j:
 - **4 Usuários**: Com diferentes preferências e históricos
 - **14 Autores**: Stephen Chbosky, Colleen Hoover, John Green, etc.
 - **4 Gêneros**: Romance, Fantasia, Ficção Científica, Filosofia
-
-## Estrutura do Projeto
-
-```
-Emilly/
-├── app.py                 # Backend Flask com rotas e lógica
-├── requirements.txt       # Dependências Python
-├── README.md             # Documentação
-├── static/
-│   └── style.css         # Estilos CSS (tema azul/lilás)
-└── templates/
-    ├── base.html         # Template base
-    ├── login.html        # Tela de login
-    ├── cadastro.html     # Tela de cadastro
-    ├── dashboard.html    # Tela inicial
-    ├── perfil.html       # Perfil do usuário
-    ├── livro.html        # Detalhes do livro
-    ├── explorar.html     # Exploração de grafos
-    └── buscar.html       # Resultados de busca
-```
 
 ## Relações do Grafo
 
@@ -148,11 +93,11 @@ O sistema demonstra consultas Cypher típicas:
 
 ```cypher
 // Livros que um usuário leu
-MATCH (u:Usuario {nome: 'Ana Silva'})-[:LEU]->(l:Livro)
+MATCH (u:Usuario {nome: 'Emilly Cruz'})-[:LEU]->(l:Livro)
 RETURN l.titulo
 
 // Recomendações baseadas em leitores similares
-MATCH (u:Usuario {nome: 'Ana Silva'})-[:LEU]->(:Livro)<-[:LEU]-(outros:Usuario)
+MATCH (u:Usuario {nome: 'Emilly Cruz'})-[:LEU]->(:Livro)<-[:LEU]-(outros:Usuario)
 MATCH (outros)-[:LEU]->(rec:Livro)
 WHERE NOT (u)-[:LEU]->(rec)
 RETURN rec.titulo, COUNT(*) as score
